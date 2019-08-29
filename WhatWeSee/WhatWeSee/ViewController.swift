@@ -18,9 +18,12 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
     let cameraPicker = UIImagePickerController()
     let photoPicker = UIImagePickerController()
     @IBOutlet weak var textLabelForWiki: UILabel!
+
     @IBOutlet weak var takeText: UILabel!
+    @IBOutlet weak var leavesTop: UIImageView!
     @IBOutlet weak var photoText: UILabel!
     @IBOutlet weak var cameraIcon: UIImageView!
+    @IBOutlet weak var leavesBottom: UIImageView!
     
     let wikipediaURl = "https://en.wikipedia.org/w/api.php"
 
@@ -79,9 +82,11 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
     }
     
     func detect(image: CIImage) {
-        cameraIcon.isHidden = true
         takeText.isHidden = true
+        leavesTop.isHidden = true
         photoText.isHidden = true
+        cameraIcon.isHidden = true
+        leavesBottom.isHidden = true
         guard let model = try? VNCoreMLModel(for: FlowerClassifier().model) else {
             fatalError("can't load ML model")
         }
